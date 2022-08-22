@@ -7,3 +7,11 @@
   content: "\f005";
   color: #d56e0c;
 }
+
+.fa {
+  font-size: 5rem;
+}
+
+#count {
+  font-size: 1.5rem;
+}
