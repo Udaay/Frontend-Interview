@@ -14,7 +14,7 @@ const FAQ_DATA = [
 ]
 
 const rootEle = document.getElementById('root');
-
+const fragment = document.createDocumentFragment();
 const createFAQ = () => {
   FAQ_DATA.forEach(({question, answer}) => {
     const container = document.createElement('details');
@@ -22,20 +22,19 @@ const createFAQ = () => {
     const content = document.createElement('div');
     const ans = document.createElement('p');
 
-    
     content.classList.add('content')
     ques.classList.add('question');
     ans.classList.add('answer');
     
-
     ques.innerText = question;
     ans.innerText = answer;
 
     content.appendChild(ans);
     container.appendChild(ques);
     container.appendChild(content);
-    rootEle.appendChild(container);
+    fragment.append(container);
   })
+  rootEle.appendChild(fragment);
 }
 
 createFAQ();

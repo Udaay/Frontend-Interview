@@ -54,4 +54,4 @@ function getStar(val) {
   document.getElementById('count').innerText = `Rating: ${val}`
 }
 
-Star('#root', 5, getStar)
+Star('#root', 5 , getStar)
