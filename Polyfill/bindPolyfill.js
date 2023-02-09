@@ -8,7 +8,7 @@ const personDetails2 = {
   lastName: "Allen"
 }
 
-function getFullName(country){
+function getFullName(country) {
   console.log(`Hello ${this.firstName} ${this.lastName} welcome to ${country}`);
 }
 
@@ -22,11 +22,11 @@ greetPerson2();
  * Bind polyfill using call or apply
  */
 
-Function.prototype.myBind = function (context, ...args){
+Function.prototype.myBind = function (context, ...args) {
   const myFunc = this; // Preserving the current function
   const params1 = args; // Preserving the default arguments passed with context
 
-  return function(...params2){
+  return function (...params2) {
     myFunc.apply(context, [...params1, ...params2]);
     /** or we can use call also, only exception would argument will be passed as comma seprated
      * myFunc.call(context, ...params1, ...params2);
@@ -45,11 +45,13 @@ greetPerson4();
  * Bind polyfill without using call or apply
  */
 
-Function.prototype.myBind2 = function(context, ...args) {
+// myBindfunction
+
+Function.prototype.myBind2 = function (context, ...args) {
   const myFunc = this;
   const params1 = args;
 
-  return function(...params2) {
+  return function (...params2) {
     context.__myFunction = myFunc;
     context.__myFunction(...params1, ...params2)
     delete context.__myFunction;
@@ -93,8 +95,8 @@ getFullName.myCall(personDetails2, ["CentralCity"]);
 
 
 
-for(var i = 0; i < 10; i++) {
-  (function(i){
-      setTimeout(() => console.log(i), 0);
+for (var i = 0; i < 10; i++) {
+  (function (i) {
+    setTimeout(() => console.log(i), 0);
   })(i)
 }

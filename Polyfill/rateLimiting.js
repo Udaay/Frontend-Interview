@@ -51,14 +51,14 @@ function debounce(func, wait, option = { leading: false, trailing: true }) {
  * @param {number} wait
  * @returns {(...args:any[]) => any}
  */
-function throttle(func, wait) { 
+function throttle(func, wait) {
   let shouldWait = false;
-  return (...args)=>{
-    if(shouldWait) return;
+  return (...args) => {
+    if (shouldWait) return;
 
     func(...args);
     shouldWait = true;
-    setTimeout(()=> shouldWait = false, wait);
+    setTimeout(() => shouldWait = false, wait);
   }
 }
 //wait time = 1000ms, and suppose user is typing each character at interval of 300ms
@@ -81,30 +81,30 @@ function throttle(func, wait) {
  * Let's look at how to implement that.
  */
 
-function throttleEdgeCase(func, wait){
+function throttleEdgeCase(func, wait) {
   let shouldWait = false;
   let waitingArgs;
-  return (...args)=>{
+  return (...args) => {
 
-    const timeoutFunc = ()=>{
-      if(waitingArgs === null){
+    const timeoutFunc = () => {
+      if (waitingArgs === null) {
         shouldWait = false;
-      }else{
+      } else {
         func.apply(this, args);
         waitingArgs = null;
         setTimeout(timeoutFunc, wait);
       }
     }
-    
+
     if (shouldWait) {
       waitingArgs = args;
       return;
-    } 
+    }
 
     func.apply(this, args);
     shouldWait = true;
     setTimeout(timeoutFunc, wait);
-    
+
     /**
      * OR
      * setTimeout(()=> {
