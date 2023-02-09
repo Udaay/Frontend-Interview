@@ -1,0 +1,27 @@
+.stop-watch-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  height: 300px;
+  width: 300px;
+}
+
+.circularDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: bisque;
+  font-size: large;
+}
+
+.separator{
+  font-weight: bolder;
+}
+
+.button-group{
+  padding: 1rem;
+}

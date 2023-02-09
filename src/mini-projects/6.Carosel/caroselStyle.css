@@ -1,0 +1,13 @@
+
+.container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+
+.btn-img{
+  width: 10%;
+  height: 10%;
+  cursor: pointer;
+}

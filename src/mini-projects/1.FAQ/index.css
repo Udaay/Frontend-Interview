@@ -1,0 +1,30 @@
+:root {
+  --text-color: #7288a2;
+  --gray: #4d5974;
+  --lightgray: #e5e5e5;
+  --blue: #03b5d2;
+}
+
+#root {
+  width: 50%;
+}
+
+details[open] > summary {
+  color: var(--text-color);
+  border-color: var(--blue);
+}
+
+summary:hover {
+  color: var(--text-color);
+}
+
+summary {
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--lightgray);
+  margin-left: 1rem;
+  padding: 0.8rem;
+}
+
+.content {
+  margin-left: 2rem;
+}

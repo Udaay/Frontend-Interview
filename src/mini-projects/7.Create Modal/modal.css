@@ -1,0 +1,37 @@
+#modal-btn {
+  background-color: #52b4e5;
+  width: 150px;
+  height: 40px;
+  padding: 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.modalBackdrop{
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: gray;
+  opacity: 0.2;
+
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.dialogContainer{
+  height: 600px;
+  width: 600px;
+  background-color: white;
+}
+
+.show-dialog {
+  display: flex;
+}
+
+.add-blur{
+    filter: blur(1x);
+}
