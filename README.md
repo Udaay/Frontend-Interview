@@ -1,1 +1,1 @@
-# Vanilla-JS
+# JavaScript Interview Guide
