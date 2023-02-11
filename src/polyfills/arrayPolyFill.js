@@ -73,3 +73,17 @@ Array.prototype.myReduce = myReduce;
 const mysum = numbers.myReduce((prev, curr) => prev * curr);
 console.log(mysum, 'sum');
 
+
+export const flatArray = (nestedArr, depth = 1) => {
+  const flat = [];
+  let currentDepth = 0
+  const handleArray = (array, currentDepth) => {
+    array.forEach(ele => {
+     if(ele instanceof Array && currentDepth <= depth){
+       handleArray(ele, ++currentDepth);
+     } else flat.push(ele);
+    });
+  }
+  handleArray(nestedArr, ++currentDepth);
+  return flat;
+}

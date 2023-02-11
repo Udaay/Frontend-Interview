@@ -2,23 +2,7 @@
 // The task is to make the object flat, 
 // i.e.there should be no nested children left and everything should be on a single level.
 
-const response = {
-  name: 'Manu',
-  age: 21,
-  characteristics: {
-    height: '6 feet',
-    complexion: 'dark',
-    hair: 'black',
-  },
-  favouriteMovie: ['Arrow', 'Flash', 'Prison Break'],
-  techStack: {
-    language: 'Javascript',
-    framework: {
-      name: 'Nextjs',
-      version: '12',
-    },
-  },
-};
+
 
 const flattenObj = (obj, root = null) => {
   let result = {};
@@ -37,28 +21,24 @@ const flattenObj = (obj, root = null) => {
   return result;
 };
 
-const deepCopy = (obj) => {
+export const deepCopy = (obj) => {
   if (obj === null || typeof obj !== 'object') {
     // It's a primitive value.
     return obj;
   }
 
-  if (obj instanceof Array) {
+  let copy;
+  if (Array.isArray(obj)) {
     // passing deepCopy as a callback to map method, which will return a new array.
     return obj.map(deepCopy);
+  } else {
+    copy = {}
+    Object.keys(obj).forEach((key) => {
+      console.log('first', key)
+      copy[key] = deepCopy(obj[key]);
+    });
   }
-
-  if (obj instanceof Object) {
-    let copy = {};
-    for (let key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        copy[key] = deepCopy(obj[key]);
-      }
-    }
-    return copy;
-  }
-
-  throw new Error("Unable to copy obj! Its type isn't supported.");
+  return copy;
 }
 
 const curry = (fn) => {

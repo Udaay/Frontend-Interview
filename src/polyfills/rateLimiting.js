@@ -1,3 +1,22 @@
+/**
+ *  
+Throttling is a technique used to control the rate at which a function gets called. It's useful when you want to limit the amount of times a function is executed, for example when handling events like scroll, resize, or key press. With throttling, you can ensure that a function is only called once every specified amount of time.
+
+Debouncing, on the other hand, is a technique used to control the frequency of function calls. It's useful when you want to delay the execution of a function until after a certain amount of time has passed without it being called. For example, you might use debouncing when working with a search bar, to ensure that the search function is only executed after the user has stopped typing for a certain amount of time.
+
+Question: Can we use throtttle in place of deboubce or vice versa ????
+
+Yes, it's possible to use throttle in place of debounce, but they serve different purposes and may produce different results.
+
+Throttling is used to limit the rate at which a function is executed, while debouncing is used to delay the execution of a function until after a specified amount of time has passed without it being called. 
+
+=>If you use throttle in place of debounce, you may end up executing the function more frequently than you intended, especially if the events that trigger the function are happening frequently.
+
+=>On the other hand, if you use debouncing in place of throttling, the function may not be executed as frequently as you would like, especially if the events that trigger the function are happening rapidly.
+
+So, depending on your requirements, you should choose the right technique to use. If you want to limit the rate of function execution, use throttling. If you want to delay the execution of a function until a certain amount of time has passed without it being called, use debouncing.
+ */
+
 /** Basic Debounce function.
  * @param {(...args: any[]) => any} func
  * @param {number} wait.
@@ -92,7 +111,10 @@ function throttleEdgeCase(func, wait) {
       } else {
         func.apply(this, args);
         waitingArgs = null;
-        setTimeout(timeoutFunc, wait);
+        // As we have called the function the waiting arguments, will have to make
+        //shouldWait to false after specified delay, this will again call the timeoutFunc
+        // with waitingArgs as null;
+        setTimeout(timeoutFunc, wait); 
       }
     }
 

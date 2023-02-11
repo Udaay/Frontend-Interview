@@ -41,6 +41,15 @@ export function ComputeAmount() {
 
 export const calculator = {
   total: 0,
+  test: function(){
+    console.log(this === calculator); // true
+  },
+  testArrow: () => {
+    //`this` inside arrow function points to object where `this` written outside arrow function points, OR where it is lexically placed inside code (staticly )
+    console.log(this); // this points to window
+  },
+  testGlobal: this, // this points to window
+
   add: function (val) {
     this.total += val;
     return this;
