@@ -17,7 +17,7 @@ const memoizedFunc = (func, context) => {
   }
 }
 
-const memoProduct = memoizedFunc(product);
+export const memoProduct = memoizedFunc(product);
 
 const first = performance.now();
 console.log(`Result: `, memoProduct(123893, 1299123));
@@ -26,3 +26,33 @@ console.log('Time: ', performance.now() - first);
 const second = performance.now();
 console.log(`Result:`, memoProduct(123893, 1299123));
 console.log('Time: ', performance.now() - second);
+
+export const memoizedFibonacci = (
+  () => {
+    const cache = {};
+
+    return (n) => {
+      if (n in cache) {
+        return cache[n];
+      } else {
+        if (n < 2) {
+          return n;
+        } else {
+          cache[n] = memoizedFibonacci(n - 1) + memoizedFibonacci(n - 2);
+          return cache[n];
+        }
+      }
+    };
+  }
+)();
+
+
+export const increment = (
+  () => {
+    let counter = 0;
+    return()=>{
+      counter++;
+      console.log(counter);
+    }
+  }
+)();

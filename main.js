@@ -1,8 +1,8 @@
 import { ComputeAmount, calculator } from "./src/challenges/method-chaining.js"
 
-import { flatArray, flatten } from "./src/polyfills/arrayPolyFill.js";
+import { flatArray } from "./src/polyfills/arrayPolyFill.js";
 import { deepCopy } from "./src/polyfills/flattenObject.js";
-import { memoProduct } from "./src/polyfills/memoizedFunc.js";
+import { memoProduct, memoizedFibonacci, increment } from "./src/polyfills/memoizedFunc.js";
 import { add } from "./src/js-snippets/predictOp.js";
 
 const nestedArr = [1, 2, [3, 4, [5, 6, [7, 8, [9, 10]]]]];
@@ -48,3 +48,12 @@ const player = {
     "stumpings": 0
   }
 }
+
+console.log(memoizedFibonacci(70) )
+
+increment()
+increment()
+increment()
+increment()
+increment()
+increment()

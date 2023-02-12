@@ -41,9 +41,13 @@ export const deepCopy = (obj) => {
   return copy;
 }
 
-const curry = (fn) => {
+export const curry = (fn) => {
   return curried = (...args) => {
-    if (fn.length < args.length) {
+    /**
+     * fn.length means , originally how many arguments does fn have.
+     * args.length means, number of arguments that has been passed to curried function.
+     */
+    if (fn.length > args.length) {  // if (fn.length !== args.length) {
       return curried.bind(null, ...args)
     }
     return fn(...args);
