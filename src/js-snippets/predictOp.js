@@ -20,3 +20,38 @@ export function add(a,b){
 
 }
 
+
+async function test() {
+  setTimeout(() => {
+    console.log("1")
+  }, 1000);
+
+  new Promise((resolve) => {
+    console.log("2")
+    setTimeout(() => {
+      console.log("3");
+    }, 2000)
+  })
+}
+
+const generatePromise = (name, baseValue) => {
+  return new Promise((res) => {
+    setTimeout(() => {
+      res(`${name} ${baseValue}`);
+      console.log(`${name} ${baseValue || ''} ${Date.now()}`);
+    }, 3000)
+  });
+}
+
+const arr = [generatePromise.bind(null, "Apple"),
+generatePromise.bind(null, "Ball"),
+generatePromise.bind(null, "Cat")];
+
+/**
+ * use the above arr to print the following o/p
+ * Apple 3482093482
+ * ball Apple 849834023
+ * Car Ball Apple 38294723
+ */
+// const p1 = generatePromise.bind(null, "Apple");
+// console.log(p1().then(d => {}));

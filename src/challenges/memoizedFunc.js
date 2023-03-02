@@ -46,6 +46,18 @@ export const memoizedFibonacci = (
   }
 )();
 
+// converted above code into short.
+const memoizedFibo = (() => {
+  let cache = {}
+  return (n) => {
+    if (n <= 2) return n;
+    else if (!cache[n]) {
+      cache[n] = memoizedFibo(n - 1) + memoizedFibo(n - 2);
+    }
+    return cache[n];
+  }
+})()
+
 
 export const increment = (
   () => {
