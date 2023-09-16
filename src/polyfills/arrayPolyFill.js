@@ -81,6 +81,7 @@ export const flatArray = (nestedArr, depth = 1) => {
     array.forEach(ele => {
      if(ele instanceof Array && currentDepth <= depth){
        handleArray(ele, ++currentDepth);
+       currentDepth--;
      } else flat.push(ele);
     });
   }
