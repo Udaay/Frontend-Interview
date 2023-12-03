@@ -1,0 +1,18 @@
+.category-label {
+  padding: 10px 0px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid whitesmoke;
+}
+
+.row-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.row-label {
+  margin: 0 12px;
+}
+
+.seat-row {
+  display: flex;
+}

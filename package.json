@@ -13,5 +13,6 @@
   "devDependencies": {
     "jest": "^29.4.2",
     "vite": "^4.1.0"
-  }
+  },
+  "dependencies": {}
 }

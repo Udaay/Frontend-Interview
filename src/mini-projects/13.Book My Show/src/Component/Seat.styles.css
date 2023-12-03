@@ -1,0 +1,37 @@
+.seat {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border: 2px solid skyblue;
+  margin: 6px;
+  padding: 2px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.seat.BOOKED {
+  background-color: cadetblue;
+  color: black;
+}
+
+.seat.AVAILABLE {
+  cursor: pointer;
+}
+
+.seat.NO_SEAT {
+  visibility: hidden;
+}
+
+.seat.BLOCKED {
+  background-color: brown;
+  color: bisque;
+}
+
+.seat-selected {
+  background-color: burlywood;
+  color: black;
+}
