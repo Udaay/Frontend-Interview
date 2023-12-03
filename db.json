@@ -1,0 +1,39 @@
+{
+  "fruits": [
+  "Apple",
+  "Banana",
+  "Orange",
+  "Strawberry",
+  "Blueberry",
+  "Raspberry",
+  "Pineapple",
+  "Mango",
+  "Kiwi",
+  "Watermelon",
+  "Grape",
+  "Cherry",
+  "Pear",
+  "Peach",
+  "Plum",
+  "Apricot",
+  "Avocado",
+  "Blackberry",
+  "Cantaloupe",
+  "Coconut",
+  "Cranberry",
+  "Fig",
+  "Guava",
+  "Honeydew",
+  "Lemon",
+  "Lime",
+  "Lychee",
+  "Nectarine",
+  "Papaya",
+  "Passionfruit",
+  "Rambutan",
+  "Tangerine"
+  ],
+  "profile": {
+    "name": "Uday"
+  }
+}
