@@ -28,8 +28,7 @@ function debounce(func, wait) {
   return (...args) => {
     clearTimeout(timer);
     timer = setTimeout(() => func(...args), wait);
-  }
-
+  };
 }
 
 /** debounce() with leading & trailing option.
@@ -50,7 +49,7 @@ function debounce(func, wait, option = { leading: false, trailing: true }) {
     if (leading && !leadingFuncInvoked) {
       func.call(this, ...args);
       leadingFuncInvoked = true;
-      return
+      return;
     }
 
     clearTimeout(timer);
@@ -59,9 +58,8 @@ function debounce(func, wait, option = { leading: false, trailing: true }) {
         func.call(this, ...args);
       }
       leadingFuncInvoked = false; // make leadingFuncInvoked false, in case of leading , leading function should able to execute after the wait.
-    }, wait)
-  }
-
+    }, wait);
+  };
 }
 
 // Basic Throtte Function
@@ -77,9 +75,10 @@ function throttle(func, wait) {
 
     func(...args);
     shouldWait = true;
-    setTimeout(() => shouldWait = false, wait);
-  }
+    setTimeout(() => (shouldWait = false), wait);
+  };
 }
+
 //wait time = 1000ms, and suppose user is typing each character at interval of 300ms
 // Type S - Call throttled function with S
 // Type a - Do nothing: 700ms left to wait
@@ -91,32 +90,31 @@ function throttle(func, wait) {
 // Delay is over - Nothing happens
 
 /**
- * If you pay close attention you will notice that our second call to the throttled function 
- * doesn't run until 1,200 milliseconds later. 
+ * If you pay close attention you will notice that our second call to the throttled function
+ * doesn't run until 1,200 milliseconds later.
  * That is 200 milliseconds after our delay.
- *  Now depending on your throttle needs this may be fine, 
- * but in most cases you want to queue up any action that occurs in your throttle 
- * so that as soon as your delay is over it will call the previous iteration of the function. 
+ *  Now depending on your throttle needs this may be fine,
+ * but in most cases you want to queue up any action that occurs in your throttle
+ * so that as soon as your delay is over it will call the previous iteration of the function.
  * Let's look at how to implement that.
  */
 
 function throttleEdgeCase(func, wait) {
   let shouldWait = false;
-  let waitingArgs;
+  let waitingArgs = null;
   return (...args) => {
-
     const timeoutFunc = () => {
       if (waitingArgs === null) {
         shouldWait = false;
       } else {
-        func.apply(this, args);
+        func.apply(this, waitingArgs);
         waitingArgs = null;
         // As we have called the function the waiting arguments, will have to make
         //shouldWait to false after specified delay, this will again call the timeoutFunc
         // with waitingArgs as null;
-        setTimeout(timeoutFunc, wait); 
+        setTimeout(timeoutFunc, wait);
       }
-    }
+    };
 
     if (shouldWait) {
       waitingArgs = args;
@@ -139,6 +137,5 @@ function throttleEdgeCase(func, wait) {
       }
     }, wait)
      */
-
-  }
+  };
 }

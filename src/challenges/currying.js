@@ -1,4 +1,3 @@
-
 /**
  sum = currySum()
 console.log(sum(10))  10
@@ -13,8 +12,8 @@ export const currySum = () => {
   return (num) => {
     total += num;
     return total;
-  }
-}
+  };
+};
 // above code has been enclose into IIFE , we can also write the same.
 
 // console.log(currySum_IIFE(10))  10
@@ -27,9 +26,8 @@ export const currySum_IIFE = (() => {
   return (num) => {
     total += num;
     return total;
-  }
-})()
-
+  };
+})();
 
 //Currying for sum, in which you can pass as many argument you wish
 // sum(10)()  => 10
@@ -40,58 +38,68 @@ export const currySum_IIFE = (() => {
 
 export const sum = (...args) => {
   let params = [...args];
-  if (args.length === 0) { // base for if no argument passed to it for first time. i.e sum() which will return 0.
+  if (args.length === 0) {
+    // base for if no argument passed to it for first time. i.e sum() which will return 0.
     return 0;
   }
-  return helper = (...args) => {
-    if (args.length === 0) { // some params have been passed
+  return (helper = (...args) => {
+    if (args.length === 0) {
+      // some params have been passed
       return params.reduce((a, b) => a + b, 0);
-    } else { // no params have been passed
+    } else {
+      // no params have been passed
       params.push(...args);
-      return helper
+      return helper;
     }
+  });
+  // return helper
+};
+
+export const sump = (...args) => {
+  let args = [...args];
+  if (args.length === 0) {
+    return 0;
   }
-  // return helper  
-}
+  return (helper = (...args) => {
+    const sum = args.reduce((a, b) => a + b, 0);
+  });
+};
 
-
-function sumFn(a,b,c,d){
-  return a + b + c +d;
+function sumFn(a, b, c, d) {
+  return a + b + c + d;
 }
 
 /**
- * 
+ *
  * let curriedSum = curry(sumFn);
  * curriedSum(1,2,3,4)
  * curriedSum(1,2,3)(4)
  * curriedSum(1,2)(3,4)
  * curriedSum(1)(2)(3)(4)
- * 
+ *
  */
 
-
 export const curry = (fn) => {
-  return curried = (...args) => {
+  return (curried = (...args) => {
     /**
      * fn.length means , originally how many arguments does fn have.
      * args.length means, number of arguments that has been passed to curried function.
      */
-    if (fn.length > args.length) {  // if (fn.length !== args.length) {
-      return curried.bind(null, ...args)
+    if (fn.length > args.length) {
+      // if (fn.length !== args.length) {
+      return curried.bind(null, ...args);
     }
     return fn(...args);
-  };
-}
+  });
+};
 //Without bind
-export const currySumLvl4 = (fn)=>{
-  return helper = (...args)=>{
-    if(args.length >= fn.length){
+export const currySumLvl4 = (fn) => {
+  return (helper = (...args) => {
+    if (args.length >= fn.length) {
       return fn(...args);
     }
     return (...args2) => {
       return helper(...args, ...args2);
-    }
-  }
-}
-
-
+    };
+  });
+};

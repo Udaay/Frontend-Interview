@@ -1,0 +1,30 @@
+/* .custom-input-box{
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.input{
+  position: relative;
+  padding: 10px 0 10px 20px;
+  border-radius: 8px 0 0 8px;
+  flex-grow: 2;
+  flex-shrink: 0;
+  flex-basis: 70%;
+  /* outline-style: none !important; */
+/* }
+
+.search-btn{
+  padding: 10px 0;
+  border-radius: 0 8px 8px 0;
+  width: 30%;
+  flex-shrink: 0;
+  background-color: aquamarine;
+  /* border-style: none !important; */
+/* }
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+} */

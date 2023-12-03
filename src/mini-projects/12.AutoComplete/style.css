@@ -1,0 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
+.search-container {
+  max-width: 400px;
+}
+
+#search-input {
+  width: 100%;
+  padding: 12px 20px;
+  outline: none;
+  border-width: 1px;
+  border-radius: 8px;
+}
+
+#search-input:focus {
+  outline: 2px solid rgb(187, 187, 255);
+  border: none;
+}
+
+.search-suggestion {
+  width: 100%;
+  display: none;
+  max-height: 150px;
+  border: 1px solid aquamarine;
+  overflow-y: scroll;
+}
+
+.suggestion-visible {
+  display: block;
+}
+
+.suggestion {
+  padding: 4px;
+  cursor: pointer;
+  background-color: aliceblue;
+}
