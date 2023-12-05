@@ -31,6 +31,7 @@ simplePipe(f3, f2, f1)(30);
 //with compose => execution will be from right to left
 simpleCompose(f1, f2, f3)(30);
 
+//WRONG CODE
 // kind of more close towards generic, where we can pass as many functions as we want,
 //this may not work for more than two function passed to compose
 const compose =
@@ -88,3 +89,70 @@ const mulAndAbs = compose(multiplyBy30, addby10, absolute);
 mulAndAbs(4);
  *
  */
+
+//--------------Salary---Pipe
+/**
+ * Create a pipe function that composes these three functions into a pipeline. 
+ * The pipeline will take a person object, extract the salary, add a bonus, and then deduct taxes to calculate the final salary.
+
+The pipe function should execute these functions in sequence, 
+with each function taking the result of the previous one as input, 
+to ultimately produce the final calculated salary.
+ */
+const person = { salary: 10000 };
+
+const getSalary = (person) => person.salary;
+const addBonus = (salary) => salary + 200000;
+const deductTax = (salary) => salary - salary / 10;
+
+/**
+ * A function that takes multiple functions as arguments and returns a new function.
+ *
+ * @param {Array<function>} funcs - An array of functions.
+ * @return {function} A new function that applies each function in the given array to the input object sequentially.
+ */
+const pipe = (...funcs) => {
+  return function (obj) {
+    return funcs.reduce((obj, fn) => {
+      return fn(obj);
+    }, obj);
+  };
+};
+
+const result = pipe(getSalary, addBonus, deductTax)(person);
+
+///-------------------
+/**
++ * Creates a function that, when invoked, executes each function stored as a value in the provided object.
++ * The created function accepts as many arguments as the function values of the object.
++ * 
++ * @param {Object} obj - An object where each key has a function as its value.
++ * @returns {Function} A function that, when executed, calls each function in the object with provided arguments.
++ *
++ * @example
++ * const obj = { a: (x, y) => x + y, b: (x, y) => x - y };
++ * const func = createFunctionFromObject(obj);
++ * func(5, 3);  // Executes: obj.a(5, 3) and obj.b(5, 3)
++ */
+const obj = {
+  a: {
+    b: (a, b, c) => a + b + c,
+    c: (a, b, c) => a + b - c,
+  },
+  d: (a, b, c) => a - b - c,
+};
+
+function createFunctionFromObject(obj) {
+  return (...args) => {
+    Object.keys(obj).forEach((key) => {
+      if (typeof obj[key] === "function") {
+        obj[key] = obj[key](...args);
+      } else {
+        obj[key] = createFunctionFromObject(obj[key])(...args);
+      }
+    });
+    return obj;
+  };
+}
+
+console.log(createFunctionFromObject(obj)(1, 1, 1));
